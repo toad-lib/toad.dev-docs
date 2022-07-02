@@ -75,7 +75,7 @@ All users will see the first code sample, because it's just a plain
 Users who are viewing the JS platform at version 1.0.0 will see code sample 2 but not 3, etc.
 
 Users viewing the book on a platform that does not have a code sample will see a small warning
-saying something like "sorry, we don't have a code sample for this yet :tear:".
+saying something like "sorry, we don't have a code sample for this yet :cry:".
 
 to prevent them from being cluttered with boilerplate,
 you may (judiciously) omit code from code samples by
