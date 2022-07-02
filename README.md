@@ -8,6 +8,42 @@ living documentation for kwap and its APIs.
 `/concepts` contains zettelkasten-style atomic notes that reference one another,
 that may be viewed on their own or in the context of the book.
 
+## The book
+Book pages are markdown docs with names of the form:
+```
+book/{n}-{title}{sub-page-title}.md
+
+n: 3-digit number that drives the ordering of the page
+   e.g. `001`, `002`, `123`
+
+title: hyphen-spaced title of the page
+       e.g. `coap-options`, `foo-bar`
+
+sub-page-title: title of a subpage prepended by ---
+                e.g. `---error-handling`, `---baz`
+```
+
+e.g.
+```text
+book/001-CoAP-Options.md
+book/001-CoAP-Options---If-Match.md
+book/001-CoAP-Options---ETag.md
+book/002-foo.md
+book/002-foo---bar.md
+book/002-foo---baz.md
+book/002-foo---quux.md
+```
+
+will be rendered as the hierarchy:
+
+- CoAP Options
+   - If-Match
+   - ETag
+- foo
+   - bar
+   - baz
+   - quux
+
 # Markdown
 Do not use the following markdown features (_unsupported by the markdown parser `kwap-rs` uses_):
 - ul / ol
@@ -25,24 +61,13 @@ code fences' language tag should be of this form:
 
 ```
 kwap/{platform}^{package-version}
+
+platform:
+  one of [rust, embedded-rust, android-kotlin, ios-swift, node-typescript, node-purescript, react-native]
+
+package-version:
+  the major version number of the `kwap` package in that platform's ecosystem.
 ```
-
-where `{platform}` is one of:
-```
-rust
-rust_embedded
-
-java
-
-swift
-
-javascript
-typescript
-purescript
-```
-
-`{package-version}` is the major version number of the `kwap`
-package in that platform's ecosystem.
 
 in this form, the code sample will only be rendered in `kwap-rs`
 when the user is viewing `kwap-rs` in that mode,
