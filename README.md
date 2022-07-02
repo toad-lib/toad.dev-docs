@@ -52,9 +52,9 @@ Do not use the following markdown features (_unsupported by the markdown parser 
 
 ## Link to Concepts
 ```
-[option](@coap_option)
+[option](@CoAP-Option)
 ```
-will be expanded to a link with the text "option" to `concept/coap_option.md`.
+will be expanded to a link with the text "option" to `concepts/CoAP-Option.md`.
 
 ## Code samples
 code fences' language tag should be of this form:
