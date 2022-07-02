@@ -1,0 +1,2 @@
+# CoAP Response
+TODO
