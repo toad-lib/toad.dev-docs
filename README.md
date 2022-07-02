@@ -48,29 +48,29 @@ in this form, the code sample will only be rendered in `kwap-rs`
 when the user is viewing `kwap-rs` in that mode,
 and they will be run as automated tests.
 
-e.g. for the following markdown:
+e.g. for the following markdown: (_ignore the spaces between the backticks, that's just to get it to render properly on github_)
 ```
-``````rust
+` ` `rust
 fn main() {
   println!("foot");
 }
-``````
-``````kwap/javascript^1
+` ` `
+` ` `kwap/javascript^1
 console.log("foo");
-``````
-``````kwap/javascript^2
+` ` `
+` ` `kwap/javascript^2
 import Console from 'fancy-logging-lib';
 Console.log("foo");
-``````
-``````kwap/rust^1
+` ` `
+` ` `kwap/rust^1
 fn main() {
   println!("foo");
 }
-``````
+` ` `
 ```
 
 All users will see the first code sample, because it's just a plain
-` ``rust`` ` code sample.
+`rust` code sample.
 
 Users who are viewing the JS platform at version 1.0.0 will see code sample 2 but not 3, etc.
 
@@ -84,16 +84,16 @@ These lines will still be included in the automated tests,
 but hidden on `kwap-rs`.
 
 ```
-``````kwap/javascript^2
+` ` `kwap/javascript^2
 -- const foo = 12;
 if (foo + 12 !== 24) {
   throw new Error('foo should be 12');
 }
-``````
-``````kwap/rust^1
+` ` `
+` ` `kwap/rust^1
 fn main () {
   -- let foo = 12_i32;
   assert_eq!(foo + 12, 24);
 }
-``````
+` ` `
 ```
