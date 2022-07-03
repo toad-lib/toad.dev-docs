@@ -1,0 +1,35 @@
+[ { path: "coap/index.md"
+  , alias: "coap"
+  , title: "CoAP"
+  }
+, { path: "coap/client.md", title: "Client" }
+, { path: "coap/server.md", title: "Server" }
+, { path: "coap/code.md", title: "Code" }
+, { path: "coap/observe.md", title: "Observe" }
+, { path: "coap/payload.md", title: "Payload" }
+, { path: "coap/request.md", title: "Request" }
+, { path: "coap/response.md", title: "Response" }
+
+, { path: "coap/option/index.md"
+  , alias: "coap/option"
+  , title: "Option"
+  }
+, { path: "coap/option/content-format.md", title: "Content-Format" }
+, { path: "coap/option/etag.md", title: "ETag" }
+
+, { path: "http/index.md"
+  , alias: "http"
+  , title: "HTTP"
+  }
+, { path: "http/headers.md", title: "Headers" }
+, { path: "http/method.md", title: "Method" }
+
+, { path: "rest/index.md"
+  , alias: "rest"
+  , title: "REST"
+  }
+, { path: "rest/resource.md", title: "Resource" }
+
+, { path: "net/latency.md", title: "Network Latency" }
+, { path: "net/protocol.md", title: "Netork Protocol" }
+]
