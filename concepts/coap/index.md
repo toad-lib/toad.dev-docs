@@ -1,3 +1,4 @@
+<!-- {"alias": "coap"} -->
 # CoAP
 
 The **Co**nstrained **A**pplication **P**rotocol is a [RESTful](@rest)

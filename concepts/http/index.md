@@ -1,3 +1,4 @@
+<!-- {"alias": "http"} -->
 # HTTP
 
 The **H**yper**T**ext **T**ransfer **P**rotocol is a [networking protocol](@Network-Protocol)
