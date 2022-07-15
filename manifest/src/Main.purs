@@ -19,7 +19,7 @@ import Data.Tuple.Nested (T2, T3, (/\))
 import Effect (Effect)
 import Effect.Console as Console
 import File as File
-import Kwap.Concept (Decl(..), Ident(..), Path(..), Title(..))
+import Kwap.Concept (Manifest(..), Decl(..), Ident(..), Path(..), Title(..))
 import Kwap.Markdown as Md
 import Node.Buffer as Buffer
 import Node.Encoding (Encoding(UTF8))
@@ -72,8 +72,8 @@ title p d =
       <<< Md.elements
       $ d
 
-manifest1 :: Pragma -> Path -> Title -> Decl
-manifest1 (Pragma { ident: i }) p@(Path ps) t =
+decl :: Pragma -> Path -> Title -> Decl
+decl (Pragma { ident: i }) p@(Path ps) t =
   let
     identDefault = String.replace (Pattern ".md") (Replacement "") ps
   in
@@ -88,8 +88,8 @@ main =
   let
     log = ("[gen-manifest] " <> _) >>> Console.log
 
-    buildManifest1 p d =
-      pure manifest1
+    buildDecl p d =
+      pure decl
         <*> pragma ("in " <> p <> ": ") d
         <*> pure (Path p)
         <*> title ("in " <> p <> ": ") d
@@ -107,9 +107,13 @@ main =
         unwrap
           <<< map (fold <<< map singleton)
           <<< sequence
-          <<< mapWithIndex buildManifest1
+          <<< mapWithIndex buildDecl
           $ docs'
-      log <<< ("idents:" <> _) <<< foldl
-        (\s (Decl { ident }) -> s <> "\n * " <> show ident)
-        "" $ ms
+      log
+        <<< ("idents:" <> _)
+        <<< fold
+        <<< map ("\n * " <> _)
+        <<< map (\(Decl { ident }) -> show ident)
+        $ ms
+      let manifest = Manifest ms
       pure unit
