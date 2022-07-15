@@ -19,7 +19,7 @@ import Data.Tuple.Nested (T2, T3, (/\))
 import Effect (Effect)
 import Effect.Console as Console
 import File as File
-import Kwap.Concept (Manifest(..), Decl(..), Ident(..), Path(..), Title(..))
+import Kwap.Concept (Manifest(..), Decl(..), Ident(..), Path(..), Title(..), encodeManifest)
 import Kwap.Markdown as Md
 import Node.Buffer as Buffer
 import Node.Encoding (Encoding(UTF8))
@@ -103,7 +103,7 @@ main =
       docs <- getDocuments
       log $ show (length docs :: Int) <> " documents found"
       docs' <- File.modifyPath relpath $ docs
-      ms <-
+      decls <-
         unwrap
           <<< map (fold <<< map singleton)
           <<< sequence
@@ -114,6 +114,10 @@ main =
         <<< fold
         <<< map ("\n * " <> _)
         <<< map (\(Decl { ident }) -> show ident)
-        $ ms
-      let manifest = Manifest ms
+        $ decls
+
+      cwd <- Process.cwd
+      manifestLoc <- Path.resolve [cwd] "../concepts.json"
+
+      File.writeTextFile UTF8 manifestLoc <<< encodeManifest <<< Manifest $ decls
       pure unit

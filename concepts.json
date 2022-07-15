@@ -1,0 +1,92 @@
+[
+  {
+    "ident": "coap/client",
+    "path": "coap/client.md",
+    "title": "CoAP Client"
+  },
+  {
+    "ident": "coap/code",
+    "path": "coap/code.md",
+    "title": "CoAP Code"
+  },
+  {
+    "ident": "coap",
+    "path": "coap/index.md",
+    "title": "CoAP"
+  },
+  {
+    "ident": "coap/observe",
+    "path": "coap/observe.md",
+    "title": "CoAP Observe"
+  },
+  {
+    "ident": "coap/option/content-format",
+    "path": "coap/option/content-format.md",
+    "title": "CoAP Content-Format Option"
+  },
+  {
+    "ident": "coap/option/etag",
+    "path": "coap/option/etag.md",
+    "title": "CoAP ETag Option"
+  },
+  {
+    "ident": "coap/option",
+    "path": "coap/option/index.md",
+    "title": "CoAP Options"
+  },
+  {
+    "ident": "coap/payload",
+    "path": "coap/payload.md",
+    "title": "CoAP Payload"
+  },
+  {
+    "ident": "coap/request",
+    "path": "coap/request.md",
+    "title": "CoAP Request"
+  },
+  {
+    "ident": "coap/response",
+    "path": "coap/response.md",
+    "title": "CoAP Response"
+  },
+  {
+    "ident": "coap/server",
+    "path": "coap/server.md",
+    "title": "CoAP Server"
+  },
+  {
+    "ident": "http/headers",
+    "path": "http/headers.md",
+    "title": "HTTP Headers"
+  },
+  {
+    "ident": "http",
+    "path": "http/index.md",
+    "title": "HTTP"
+  },
+  {
+    "ident": "http/method",
+    "path": "http/method.md",
+    "title": "HTTP Method"
+  },
+  {
+    "ident": "net/latency",
+    "path": "net/latency.md",
+    "title": "Network Latency"
+  },
+  {
+    "ident": "net/protocol",
+    "path": "net/protocol.md",
+    "title": "Network Protocol"
+  },
+  {
+    "ident": "rest",
+    "path": "rest/index.md",
+    "title": "REST"
+  },
+  {
+    "ident": "rest/resource",
+    "path": "rest/resource.md",
+    "title": "Resource"
+  }
+]
