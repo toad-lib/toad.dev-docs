@@ -120,5 +120,5 @@ in upstream
                      , "tuples"
                      ]
     , repo = "https://github.com/clov-coffee/purescript-kwap-rs"
-    , version = "main"
+    , version = "1ff0487"
     }

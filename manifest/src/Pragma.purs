@@ -17,9 +17,12 @@ import Data.Codec.Argonaut.Compat (maybe) as Text.Json
 import Data.Codec.Argonaut.Migration (addDefaultField) as Text.Json
 import Data.Codec.Argonaut.Record (object) as Text.Json
 import Data.Either (Either)
-import Data.Maybe (Maybe)
+import Data.Maybe (Maybe(..))
 
 newtype Pragma = Pragma { alias :: Maybe String }
+
+defaultPragma :: Pragma
+defaultPragma = Pragma { alias: Nothing }
 
 pragmaCodec
   :: Text.Json.JsonCodec { alias :: Maybe String }

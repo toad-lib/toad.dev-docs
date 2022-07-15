@@ -13,11 +13,13 @@ to generate this file without the comments in this block.
 { name = "kwap-docs"
 , dependencies =
   [ "argonaut-core"
+  , "arrays"
   , "bifunctors"
   , "codec-argonaut"
   , "console"
   , "effect"
   , "either"
+  , "filterable"
   , "foldable-traversable"
   , "kwap-rs"
   , "maybe"
@@ -25,8 +27,10 @@ to generate this file without the comments in this block.
   , "node-fs"
   , "node-path"
   , "node-process"
+  , "parsing"
   , "partial"
   , "prelude"
+  , "tuples"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
