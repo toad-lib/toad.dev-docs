@@ -27,9 +27,11 @@ to generate this file without the comments in this block.
   , "node-fs"
   , "node-path"
   , "node-process"
+  , "ordered-collections"
   , "parsing"
   , "partial"
   , "prelude"
+  , "strings"
   , "tuples"
   ]
 , packages = ./packages.dhall

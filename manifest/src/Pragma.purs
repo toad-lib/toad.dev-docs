@@ -19,16 +19,16 @@ import Data.Codec.Argonaut.Record (object) as Text.Json
 import Data.Either (Either)
 import Data.Maybe (Maybe(..))
 
-newtype Pragma = Pragma { alias :: Maybe String }
+newtype Pragma = Pragma { ident :: Maybe String }
 
 defaultPragma :: Pragma
-defaultPragma = Pragma { alias: Nothing }
+defaultPragma = Pragma { ident: Nothing }
 
 pragmaCodec
-  :: Text.Json.JsonCodec { alias :: Maybe String }
-pragmaCodec = Text.Json.addDefaultField "alias" Text.Json.jsonNull
+  :: Text.Json.JsonCodec { ident :: Maybe String }
+pragmaCodec = Text.Json.addDefaultField "ident" Text.Json.jsonNull
   >~> Text.Json.object "Pragma"
-    { alias: Text.Json.maybe Text.Json.string
+    { ident: Text.Json.maybe Text.Json.string
     }
 
 decodePragma :: String -> Either String Pragma

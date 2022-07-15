@@ -6,17 +6,21 @@ import Data.Array (head, singleton)
 import Data.Bifunctor (lmap, rmap)
 import Data.Either (Either(..), either, fromRight, note)
 import Data.Filterable (filter)
-import Data.Foldable (fold, fold, foldl, length)
+import Data.Foldable (fold, foldl, length)
+import Data.FoldableWithIndex (foldlWithIndex)
 import Data.FunctorWithIndex (mapWithIndex)
-import Data.Maybe (Maybe(..))
+import Data.Map as Map
+import Data.Maybe (Maybe(..), fromMaybe)
+import Data.String as String
+import Data.String.Pattern (Pattern(..), Replacement(..))
 import Data.Traversable (sequence)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested (T2, T3, (/\))
 import Effect (Effect)
 import Effect.Console as Console
 import File as File
-import Kwap.Concept (Alias(..), Decl(..), Path(..), Title(..))
-import Kwap.Markdown as Markdown
+import Kwap.Concept (Decl(..), Ident(..), Path(..), Title(..))
+import Kwap.Markdown as Md
 import Node.Buffer as Buffer
 import Node.Encoding (Encoding(UTF8))
 import Node.Path as Path
@@ -28,7 +32,7 @@ import Pragma (Pragma(..), decodePragma, defaultPragma)
 unwrap :: ∀ a. Either String a -> Effect a
 unwrap = either unsafeCrashWith pure
 
-getDocuments :: Effect (File.FileTree Markdown.Document)
+getDocuments :: Effect (File.FileTree Md.Document)
 getDocuments = do
   cwd <- Process.cwd
   p <- Path.resolve [ cwd ] "../concepts"
@@ -38,25 +42,24 @@ getDocuments = do
   unwrap
     <<< lmap show
     <<< sequence
-    <<< map (flip runParser $ Markdown.documentP)
+    <<< map (flip runParser $ Md.documentP)
     $ strings
 
 pragma
   :: String
-  -> Markdown.Document
+  -> Md.Document
   -> Either String Pragma
-pragma p d = case head <<< Markdown.elements $ d of
-  Just (Markdown.ElementComment json) -> lmap (p <> _) $ decodePragma json
+pragma p d = case head <<< Md.elements $ d of
+  Just (Md.ElementComment json) -> lmap (p <> _) $ decodePragma json
   _ -> pure defaultPragma
 
-title :: String -> Markdown.Document -> Either String Title
+title :: String -> Md.Document -> Either String Title
 title p d =
   let
-    isComment (Markdown.ElementComment _) = true
+    isComment (Md.ElementComment _) = true
     isComment _ = false
 
-    h1Text (Markdown.ElementHeading (Markdown.H1 s)) = Just $
-      Markdown.spanString s
+    h1Text (Md.ElementHeading (Md.H1 s)) = Just $ Md.spanString s
     h1Text _ = Nothing
   in
     lmap (_ <> "\n" <> show d)
@@ -66,28 +69,47 @@ title p d =
       <<< (flip bind) h1Text
       <<< head
       <<< filter (not isComment)
-      <<< Markdown.elements
+      <<< Md.elements
       $ d
 
 manifest1 :: Pragma -> Path -> Title -> Decl
-manifest1 (Pragma { alias: a }) p t = Decl
-  { alias: Alias <$> a, title: t, path: p }
+manifest1 (Pragma { ident: i }) p@(Path ps) t =
+  let
+    identDefault = String.replace (Pattern ".md") (Replacement "") ps
+  in
+    Decl
+      { ident: Ident (fromMaybe identDefault i)
+      , title: t
+      , path: p
+      }
 
 main :: Effect Unit
 main =
   let
-    buildManifest1 p d = pure manifest1 <*> pragma ("in " <> p <> ": ") d
-      <*> pure (Path p)
-      <*> title ("in " <> p <> ": ") d
+    log = ("[gen-manifest] " <> _) >>> Console.log
+
+    buildManifest1 p d =
+      pure manifest1
+        <*> pragma ("in " <> p <> ": ") d
+        <*> pure (Path p)
+        <*> title ("in " <> p <> ": ") d
+
+    relpath p = do
+      cwd <- Process.cwd
+      concepts <- Path.resolve [ cwd ] "../concepts"
+      pure $ Path.relative concepts p
   in
     do
-      cwd <- Process.cwd
       docs <- getDocuments
-      Console.log $ "[gen-manifest] " <> (show <<< (length :: _ -> Int) $ docs)
-        <> " documents found"
+      log $ show (length docs :: Int) <> " documents found"
+      docs' <- File.modifyPath relpath $ docs
       ms <-
-        unwrap <<< map (fold <<< map singleton) <<< sequence <<< mapWithIndex
-          buildManifest1 $ docs
-      Console.log $ "[gen-manifest] found " <>
-        (show <<< map (\(Decl { alias }) -> alias) $ ms)
+        unwrap
+          <<< map (fold <<< map singleton)
+          <<< sequence
+          <<< mapWithIndex buildManifest1
+          $ docs'
+      log <<< ("idents:" <> _) <<< foldl
+        (\s (Decl { ident }) -> s <> "\n * " <> show ident)
+        "" $ ms
       pure unit

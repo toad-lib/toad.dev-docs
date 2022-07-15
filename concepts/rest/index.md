@@ -1,4 +1,4 @@
-<!-- {"alias": "rest"} -->
+<!-- {"ident": "rest"} -->
 # REST
 
 **RE**presentational **S**tate **T**ransfer is a way of modeling an [API](@API) as

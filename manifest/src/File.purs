@@ -1,7 +1,8 @@
-module File (module FS, FileTree(..), readdirRec) where
+module File (module FS, FileTree(..), readdirRec, modifyPath) where
 
 import Prelude
 
+import Control.Applicative (class Applicative)
 import Data.Foldable (class Foldable, fold, foldl, foldr)
 import Data.FoldableWithIndex
   ( class FoldableWithIndex
@@ -52,6 +53,22 @@ instance traverseFT :: Traversable FileTree where
   traverse f (Dir p ts) = Dir p <$> traverse (traverse f) ts
   traverse f (File p a) = File p <$> f a
   sequence = sequenceDefault
+
+modifyPath
+  :: forall f a
+   . Applicative f
+  => (FilePath -> f FilePath)
+  -> FileTree a
+  -> f (FileTree a)
+modifyPath f (Dir p ts) =
+  ado
+    p' <- f p
+    ts' <- sequence <<< map (modifyPath f) $ ts
+    in Dir p' ts'
+modifyPath f (File p t) =
+  ado
+    p' <- f p
+    in File p' t
 
 readdirRec :: FilePath -> Effect (FileTree Buffer)
 readdirRec p =
