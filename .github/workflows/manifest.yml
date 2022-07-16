@@ -15,16 +15,17 @@ jobs:
       with:
         path: |
           ~/.yarn
-          ~/.asdf
+          manifest/.spago
           manifest/output
           manifest/node_modules
-        key: ${{runner.os}}-node-${{hashFiles('**/yarn.lock')}}
-        restore-keys: ${{runner.os}}-node-14
+        key: always-lol
     - run: |
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
         git config --global user.name "${{ github.actor }}"
-    - run: "yarn && yarn start"
+    - run: "yarn"
       working-directory: "manifest"
-    - run: "git add -A"
-    - run: "git commit -m 'chore: update manifest'"
-    - run: "git push"
+    - run: "yarn gen-manifest"
+      working-directory: "manifest"
+    - run: |
+        git add -A
+        git commit -m 'chore: update manifest' && git push || echo 'manifest unchanged'

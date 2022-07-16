@@ -12,8 +12,8 @@
     "build:watch": "spago build -w",
     "b": "yarn build",
     "b:w": "yarn build:watch",
-    "start": "spago run",
-    "s": "yarn start"
+    "gen-manifest": "spago run",
+    "g": "yarn gen-manifest"
   },
   "browserslist": [
     "defaults"
