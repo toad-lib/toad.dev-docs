@@ -80,6 +80,11 @@
     "title": "Network Protocol"
   },
   {
+    "ident": "poop,md",
+    "path": "poop,md",
+    "title": "hello poop"
+  },
+  {
     "ident": "rest",
     "path": "rest/index.md",
     "title": "REST"
