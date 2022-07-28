@@ -10,7 +10,7 @@ When creating a new Spago project, you can use
 `spago init --no-comments` or `spago init -C`
 to generate this file without the comments in this block.
 -}
-{ name = "kwap-docs"
+{ name = "toad-dev-docs"
 , dependencies =
   [ "argonaut-core"
   , "arrays"
@@ -21,7 +21,7 @@ to generate this file without the comments in this block.
   , "either"
   , "filterable"
   , "foldable-traversable"
-  , "kwap-rs"
+  , "toad-dev"
   , "maybe"
   , "node-buffer"
   , "node-fs"
@@ -33,6 +33,7 @@ to generate this file without the comments in this block.
   , "prelude"
   , "strings"
   , "tuples"
+  , "unordered-collections"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]

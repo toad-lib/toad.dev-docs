@@ -19,8 +19,8 @@ import Data.Tuple.Nested (T2, T3, (/\))
 import Effect (Effect)
 import Effect.Console as Console
 import File as File
-import Kwap.Concept (Manifest(..), Decl(..), Ident(..), Path(..), Title(..), encodeManifest)
-import Kwap.Markdown as Md
+import Toad.Concept (Manifest(..), Decl(..), Ident(..), Path(..), Title(..), encodeManifest)
+import Toad.Markdown as Md
 import Node.Buffer as Buffer
 import Node.Encoding (Encoding(UTF8))
 import Node.Path as Path

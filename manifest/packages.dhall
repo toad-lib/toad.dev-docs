@@ -103,7 +103,7 @@ let upstream =
         sha256:ffc496e19c93f211b990f52e63e8c16f31273d4369dbae37c7cf6ea852d4442f
 
 in upstream
-  with kwap-rs =
+  with toad-dev =
     { dependencies = [ "aff"
                      , "arrays"
                      , "control"
@@ -119,6 +119,23 @@ in upstream
                      , "transformers"
                      , "tuples"
                      ]
-    , repo = "https://github.com/clov-coffee/purescript-kwap-rs"
-    , version = "19d3702"
+    , repo = "https://github.com/clov-coffee/toad.dev-purs"
+    , version = "985142c"
     }
+   with unordered-collections =
+          { dependencies =
+              [ "arrays"
+              , "enums"
+              , "functions"
+              , "integers"
+              , "lists"
+              , "prelude"
+              , "record"
+              , "tuples"
+              , "typelevel-prelude"
+              , "unfoldable"
+              ]
+          , repo =
+              "https://github.com/fehrenbach/purescript-unordered-collections"
+          , version = "6fb203a"
+          }
