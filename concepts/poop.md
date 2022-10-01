@@ -17,8 +17,8 @@ fn foo() -> Bar {
 }
 ```
 
-- abc
-- def
+ - abc
+ - def
    - 123
    - 456
       1. fapfa
@@ -26,4 +26,4 @@ fn foo() -> Bar {
       3. fpaefk
    - fklae
    - reao
-- kef   
+ - kef   
