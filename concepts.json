@@ -70,6 +70,16 @@
     "title": "HTTP Method"
   },
   {
+    "ident": "http/status",
+    "path": "http/status.md",
+    "title": "HTTP Status Code"
+  },
+  {
+    "ident": "net/api",
+    "path": "net/api.md",
+    "title": "APIs on the Internet"
+  },
+  {
     "ident": "net/latency",
     "path": "net/latency.md",
     "title": "Network Latency"
