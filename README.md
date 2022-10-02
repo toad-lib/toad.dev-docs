@@ -45,9 +45,16 @@ will be rendered as the hierarchy:
    - quux
 
 # Markdown
-Do not use the following markdown features (_unsupported by the markdown parser `kwap-rs` uses_):
-- anchor tags not of the form `[text](uri)` (except the special "concept" syntax)
-- tables
+The Markdown parser in toad.dev-purs doesn't support tables.
+
+You also need to introduce a leading space to lists, e.g.
+```md
+- i won't be
+- rendered properly
+
+ - but i
+ - will
+```
 
 ## Link to Concepts
 ```
