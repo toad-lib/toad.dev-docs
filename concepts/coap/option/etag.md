@@ -1,2 +1,0 @@
-# CoAP ETag Option
-TODO

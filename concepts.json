@@ -15,24 +15,29 @@
     "title": "CoAP"
   },
   {
+    "ident": "coap/message",
+    "path": "coap/message/index.md",
+    "title": "CoAP Message"
+  },
+  {
+    "ident": "coap/message/option/content-format",
+    "path": "coap/message/option/content-format.md",
+    "title": "CoAP Message Option - Content-Format"
+  },
+  {
+    "ident": "coap/message/option/etag",
+    "path": "coap/message/option/etag.md",
+    "title": "CoAP Message Option - E-Tag"
+  },
+  {
+    "ident": "coap/message/option",
+    "path": "coap/message/option/index.md",
+    "title": "CoAP Message Option"
+  },
+  {
     "ident": "coap/observe",
     "path": "coap/observe.md",
     "title": "CoAP Observe"
-  },
-  {
-    "ident": "coap/option/content-format",
-    "path": "coap/option/content-format.md",
-    "title": "CoAP Content-Format Option"
-  },
-  {
-    "ident": "coap/option/etag",
-    "path": "coap/option/etag.md",
-    "title": "CoAP ETag Option"
-  },
-  {
-    "ident": "coap/option",
-    "path": "coap/option/index.md",
-    "title": "CoAP Options"
   },
   {
     "ident": "coap/payload",
@@ -53,6 +58,21 @@
     "ident": "coap/server",
     "path": "coap/server.md",
     "title": "CoAP Server"
+  },
+  {
+    "ident": "coap/usecase/iot",
+    "path": "coap/usecase/iot.md",
+    "title": "CoAP Usecase - IoT"
+  },
+  {
+    "ident": "coap/usecase/service",
+    "path": "coap/usecase/service.md",
+    "title": "CoAP Usecase - Service"
+  },
+  {
+    "ident": "coap/usecase/web",
+    "path": "coap/usecase/web.md",
+    "title": "CoAP Usecase - Web"
   },
   {
     "ident": "http/headers",
@@ -88,11 +108,6 @@
     "ident": "net/protocol",
     "path": "net/protocol.md",
     "title": "Network Protocol"
-  },
-  {
-    "ident": "poop",
-    "path": "poop.md",
-    "title": "hello poop"
   },
   {
     "ident": "rest",

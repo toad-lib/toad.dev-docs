@@ -9,6 +9,7 @@ RESTful APIs model "things" (e.g. User, Pizza, Clothes) as [resources](@rest/res
 
 ## Constraints
 REST defines four constraints that differentiate REST from other API architecture styles:
+
  - Each request must uniquely identify a resource being acted on
  - A resource obtained from the server must be sufficient to modify that resource's state
  - Each message includes enough information to describe how to process the message
@@ -16,6 +17,7 @@ REST defines four constraints that differentiate REST from other API architectur
 
 ## In Practice
 In practice, the constraints of a REST interface (as a Web API) are usually fulfilled by the combination of:
+
  - [HTTP verbs](@http/method) (allows the client to have to know very little about that API in order to interact richly with it)
  - [HTTP headers](@http/header) (allows the client and server to attach metadata to resources, e.g. "who am I?" and "what format is the data in?")
  - [HTTP status codes](@http/status) (allows the client and server to attach metadata to resources, e.g. "who am I?" and "what format is the data in?")
