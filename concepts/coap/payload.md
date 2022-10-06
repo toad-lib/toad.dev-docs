@@ -1,2 +1,0 @@
-# CoAP Payload
-TODO

@@ -1,4 +1,4 @@
-# APIs on the Internet
+# Network APIs
 
 An internet API is an abstract way of interacting with some set of data.
 

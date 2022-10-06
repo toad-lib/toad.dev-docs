@@ -1,2 +1,0 @@
-# CoAP Code
-TODO

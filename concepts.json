@@ -5,11 +5,6 @@
     "title": "CoAP Client"
   },
   {
-    "ident": "coap/code",
-    "path": "coap/code.md",
-    "title": "CoAP Code"
-  },
-  {
     "ident": "coap",
     "path": "coap/index.md",
     "title": "CoAP"
@@ -35,14 +30,14 @@
     "title": "CoAP Message Option"
   },
   {
+    "ident": "coap/message/status",
+    "path": "coap/message/status.md",
+    "title": "CoAP Message Code"
+  },
+  {
     "ident": "coap/observe",
     "path": "coap/observe.md",
     "title": "CoAP Observe"
-  },
-  {
-    "ident": "coap/payload",
-    "path": "coap/payload.md",
-    "title": "CoAP Payload"
   },
   {
     "ident": "coap/request",
@@ -97,7 +92,7 @@
   {
     "ident": "net/api",
     "path": "net/api.md",
-    "title": "APIs on the Internet"
+    "title": "Network APIs"
   },
   {
     "ident": "net/latency",
@@ -117,6 +112,6 @@
   {
     "ident": "rest/resource",
     "path": "rest/resource.md",
-    "title": "Resource"
+    "title": "REST Resource"
   }
 ]

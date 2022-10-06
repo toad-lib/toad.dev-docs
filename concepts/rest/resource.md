@@ -1,4 +1,4 @@
-# Resource
+# REST Resource
 
 A Resource is anything accessible from an [API](@API).
 
