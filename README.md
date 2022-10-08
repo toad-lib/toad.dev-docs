@@ -1,4 +1,4 @@
-# kwap-docs
+# toad-docs
 Static content served by www.kwap.rs
 
 # Structure
